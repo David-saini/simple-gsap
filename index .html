@@ -16,7 +16,16 @@
 
         .box_2 {
             background: crimson;
+            height: 200px;
+            width: 200px;
+            border-radius: 12px;
+        }
 
+        .box_3 {
+            background: yellow;
+            height: 200px;
+            width: 200px;
+            border-radius: 12px;
         }
     </style>
 </head>
@@ -25,6 +34,12 @@
 
     <div class="box_1"></div>
     <div class="box_2"></div>
+    <div class="box_3"></div>
+
+    <h4>Hello</h4>
+    <h4>Hello</h4>
+    <h4>Hello</h4>
+    <h4>Hello</h4>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
 
@@ -36,9 +51,32 @@
             y: -100,
         })
 
-        gsap.fromTo(".box_2", {
-
+        gsap.from(".box_2", {
+            x: 500,
+            duration: 2,
+            backgroundColor: "blue",
+            repeat: Infinity,
         })
+
+        gsap.fromTo(".box_3", {
+            x: 0,
+            y: 0,
+            opacity: 0
+        }, {
+            x: 200,
+            y: 100,
+            opacity: 1,
+            duration: 3
+        });
+
+        gsap.to("h4", {
+            x: 400,
+            duration: 1,
+            stagger: 0.5,
+            yoyo: true,
+            repeat: 2,
+            ease: "power1.inOut"
+        });
     </script>
 </body>
 
@@ -47,7 +85,7 @@
 
 
 
-
+<!-- 
 
 <!doctype html>
 <html lang="en">
@@ -154,4 +192,4 @@
 
 </body>
 
-</html>
+</html> -->
