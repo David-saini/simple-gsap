@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -80,7 +80,7 @@
     </script>
 </body>
 
-</html> -->
+</html>
 
 
 
@@ -149,8 +149,6 @@
                 start: 'top center',
                 end: 'bottom center',
                 pin: true,
-                start: "top top",
-                end: "bottom top",
                 scrub: 3,
             },
             // rotate: "360deg",
@@ -164,16 +162,15 @@
                 scroll: "body",
                 marker: true,
                 pin: true,
-                // start: 'top center',
-                // end: 'bottom center',
-                start: "top 0%",
-                end: "bottom 130%",
+                start: 'top center',
+                end: 'bottom center',
+
                 scrub: 2,
             },
             x: 2000,
             rotate: "360deg",
             duration: 2,
-            background: "green",
+            backgroundColor: "green",
         });
         gsap.from(".box4", {
             scrollTrigger: {
