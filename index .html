@@ -1,92 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <style>
-        .box_1 {
-            background: grey;
-            height: 200px;
-            width: 200px;
-            border-radius: 12px;
-        }
-
-        .box_2 {
-            background: crimson;
-            height: 200px;
-            width: 200px;
-            border-radius: 12px;
-        }
-
-        .box_3 {
-            background: yellow;
-            height: 200px;
-            width: 200px;
-            border-radius: 12px;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="box_1"></div>
-    <div class="box_2"></div>
-    <div class="box_3"></div>
-
-    <h4>Hello</h4>
-    <h4>Hello</h4>
-    <h4>Hello</h4>
-    <h4>Hello</h4>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
-
-    <script>
-        gsap.to(".box_1", {
-            x: 500,
-            repeat: Infinity,
-            duration: 2,
-            y: -100,
-        })
-
-        gsap.from(".box_2", {
-            x: 500,
-            duration: 2,
-            backgroundColor: "blue",
-            repeat: Infinity,
-        })
-
-        gsap.fromTo(".box_3", {
-            x: 0,
-            y: 0,
-            opacity: 0
-        }, {
-            x: 200,
-            y: 100,
-            opacity: 1,
-            duration: 3
-        });
-
-        gsap.to("h4", {
-            x: 400,
-            duration: 1,
-            stagger: 0.5,
-            yoyo: true,
-            repeat: 2,
-            ease: "power1.inOut"
-        });
-    </script>
-</body>
-
-</html>
-
-
-
-
-
-
 <!doctype html>
 <html lang="en">
 
@@ -105,22 +16,28 @@
 <body class="bg-light">
 
     <div class="overflow-hidden">
-        <div class="container">
-            <div class="mt-5 min-vh-100">
-                <div class="box"></div>
-            </div>
 
-            <div class="min-vh-100">
-                <div class="box2 my-3"></div>
-            </div>
+        <div class="min-vh-100"></div>
 
-            <div class="min-vh-100">
-                <div class="box3"></div>
+        <section>
+            <div class="container position-relative">
+                <div class="min-vh-100 box-parent">
+
+                    <button class="btn1 z-1">Go</button>
+                    <button class="btn2 z-1">Go</button>
+                    <button class="btn3 z-1">Go</button>
+                    <button class="btn4 z-1">Go</button>
+
+                    <div class="bottom_line"></div>
+                    <div class="box"></div>
+                    <div class="box2"></div>
+                    <div class="box3"></div>
+                    <div class="box4"></div>
+                </div>
             </div>
-            <div class="min-vh-100">
-                <div class="box4"></div>
-            </div>
-        </div>
+        </section>
+
+        <div class="min-vh-100"></div>
 
     </div>
 
@@ -132,60 +49,63 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
 
     <script>
-        gsap.from(".box", {
-            x: 300,
-            scale: 1.5,
-            rotate: "-360deg",
-            duration: 3,
-            repeat: Infinity,
-            scrub: 5,
-            pin: true,
-        });
-        gsap.to(".box2", {
+        gsap.timeline({
             scrollTrigger: {
-                trigger: ".box2",
-                scroll: "body",
-                marker: true,
-                start: 'top center',
-                end: 'bottom center',
+                trigger: '.box-parent',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 0.5,
+                markers: true,
                 pin: true,
-                scrub: 3,
-            },
-            // rotate: "360deg",
-            x: 1200,
-            duration: 1,
-        });
+            }
+        })
+            .from(".box2", {
+                x: "200%"
+            })
+            .fromTo(".bottom_line", {
+                width: "25%"
+            }, {
+                width: "50%",
+            }, "<"
+            )
+            .fromTo(".btn2", {
+                backgroundColor: "black",
+            }, {
+                backgroundColor: "yellow",
+            }, "<"
+            )
 
-        gsap.from(".box3", {
-            scrollTrigger: {
-                trigger: "box3",
-                scroll: "body",
-                marker: true,
-                pin: true,
-                start: 'top center',
-                end: 'bottom center',
+            .from(".box3", {
+                x: "200%"
+            }).fromTo(".bottom_line", {
+                width: "50%"
+            }, {
+                width: "75%",
+            }, "<")
+            .fromTo(".btn3", {
+                backgroundColor: "black",
+            }, {
+                backgroundColor: "blue",
+            }, "<"
+            )
 
-                scrub: 2,
-            },
-            x: 2000,
-            rotate: "360deg",
-            duration: 2,
-            backgroundColor: "green",
-        });
-        gsap.from(".box4", {
-            scrollTrigger: {
-                trigger: "box4",
-                scroll: "body",
-                marker: true,
-                start: 'top center',
-                end: 'bottom center',
-                scrub: 1,
-            },
-            x: 2000,
-            rotate: "360deg",
-            duration: 1,
-            background: "green",
-        });
+            .from(".box4", {
+                x: "200%"
+            }).fromTo(".bottom_line", {
+                width: "75%"
+            }, {
+                width: "100%",
+            }, "<"
+            )
+            .fromTo(".btn4", {
+                backgroundColor: "black",
+            }, {
+                backgroundColor: "purple",
+            }, "<"
+            );
+
+
+
 
     </script>
 
